@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  web:
+    image: developer10/api-futiuber
+    environment:
+      NOMEUSER: antonio
+      EMAILUSER: antonio@gmail.com
+      PWDUSER: antonio
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+volumes:
+  postgres_data:
+
+    
